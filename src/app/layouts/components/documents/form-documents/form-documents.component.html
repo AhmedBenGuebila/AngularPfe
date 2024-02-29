@@ -1,0 +1,41 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="header">
+              <h4 class="title">Add Document</h4>
+            </div>
+            <div class="content">
+              <form (submit)="onSubmit()">
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" id="title" name="title" [(ngModel)]="document.titre" required>
+                </div>
+                <div class="form-group">
+                  <label for="documentType">Document Type</label>
+                  <select class="form-control" id="documentType" name="documentType" [(ngModel)]="document.documentType">
+                    <option *ngFor="let type of documentTypes" [value]="type">{{ type }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="concerneType">Concerne Type</label>
+                  <select class="form-control" id="concerneType" name="concerneType" [(ngModel)]="document.concerneType">
+                    <option *ngFor="let type of concerneTypes" [value]="type">{{ type }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="file">File</label>
+                  <input type="file" class="form-control-file" id="fileInput" (change)="onFileChange($event)" required>
+
+
+                </div>
+                <button type="submit" class="btn btn-info btn-fill">Add Document</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

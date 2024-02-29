@@ -1,0 +1,56 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="header">
+                      <h4 class="title">Affecter les utilisateurs au document {{ document.titre }}</h4>
+                    
+                      <div>
+                        <select [(ngModel)]="selectedRegion" (change)="onRegionChange()">
+                          <option value="" disabled selected>Choisissez une région</option>
+                          <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+                        </select>
+                        <select [(ngModel)]="selectedPort" (change)="onPortChange()">
+                          <option value="" disabled selected>Choisissez un port</option>
+                          <option *ngFor="let port of ports" [value]="port">{{ port }}</option>
+                        </select>
+                      </div>
+                  </div>
+                  <div class="content">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th>Nom et Prénom</th>
+                                      <th>Role</th>
+                                    
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let user of users">
+                                      <td>
+                                          {{ user.nom }} {{ user.prenom }} 
+                                      </td>
+                                      <td>
+                                        {{ user.userRegionMaritimeType}} {{ user.userPortType }} {{ user.userAdminType }} 
+                                    </td>
+                                      <td>
+                                          <button *ngIf="!isUserAffected(user.idUser)" type="button" class="btn btn-info btn-sm" (click)="affecterUtilisateur(user.idUser)">
+                                              Affecter au document
+                                          </button>
+                                          <button *ngIf="isUserAffected(user.idUser)" type="button" class="btn btn-danger btn-sm" (click)="desaffecterUtilisateur(user.idUser)">
+                                              Désaffecter du document
+                                          </button>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
