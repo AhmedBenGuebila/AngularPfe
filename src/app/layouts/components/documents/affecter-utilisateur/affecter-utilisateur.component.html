@@ -4,14 +4,15 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="header">
-                      <h4 class="title">Affecter les utilisateurs au document {{ document.titre }}</h4>
-                    
+                      <h4 class="title">Affecter les utilisateurs au document : {{ document.titre }}</h4>
+                    <br>
                       <div>
-                        <select [(ngModel)]="selectedRegion" (change)="onRegionChange()">
+                        <select class="btn btn-info btn-fill btn-sm" [(ngModel)]="selectedRegion" (change)="onRegionChange()">
                           <option value="" disabled selected>Choisissez une région</option>
                           <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
                         </select>
-                        <select [(ngModel)]="selectedPort" (change)="onPortChange()">
+                        <span style="margin-left: 10px;"></span>
+                        <select class="btn btn-info btn-fill btn-sm" [(ngModel)]="selectedPort" (change)="onPortChange()">
                           <option value="" disabled selected>Choisissez un port</option>
                           <option *ngFor="let port of ports" [value]="port">{{ port }}</option>
                         </select>
@@ -37,10 +38,10 @@
                                         {{ user.userRegionMaritimeType}} {{ user.userPortType }} {{ user.userAdminType }} 
                                     </td>
                                       <td>
-                                          <button *ngIf="!isUserAffected(user.idUser)" type="button" class="btn btn-info btn-sm" (click)="affecterUtilisateur(user.idUser)">
+                                          <button *ngIf="!isUserAffected(user.idUser)" type="button" class="btn btn-info btn-fill btn-sm" (click)="affecterUtilisateur(user.idUser)">
                                               Affecter au document
                                           </button>
-                                          <button *ngIf="isUserAffected(user.idUser)" type="button" class="btn btn-danger btn-sm" (click)="desaffecterUtilisateur(user.idUser)">
+                                          <button *ngIf="isUserAffected(user.idUser)" type="button" class="btn btn-danger btn-fill btn-sm" (click)="desaffecterUtilisateur(user.idUser)">
                                               Désaffecter du document
                                           </button>
                                       </td>

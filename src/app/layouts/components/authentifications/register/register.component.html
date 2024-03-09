@@ -1,0 +1,162 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Add User</h4>
+                    </div>
+                    <div class="content">
+                        <form (ngSubmit)="registerUser()">
+                           
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Nom</label>
+                                        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="user.nom">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label>Prenom</label>
+                                        <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="user.prenom">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" placeholder="Email" [(ngModel)]="user.email">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>CIN</label>
+                                        <input type="number" class="form-control" placeholder="CIN" [(ngModel)]="user.cin">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Numero de Telephone</label>
+                                        <input type="number" class="form-control" placeholder="Phone Number" [(ngModel)]="user.numTel">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Mots de passe</label>
+                                        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Type Utilisateur</label>
+                                        <select class="form-control" [(ngModel)]="user.userType" (change)="toggleFields()">
+                                            <option value="ADMIN">Admin</option>
+                                            <option value="PORT">Port</option>
+                                            <option value="REGION_MARITIME">Region Maritime</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="showAdminFields">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Type d'administrateur</label>
+                                        <select class="form-control" [(ngModel)]="user.userAdminType">
+                                            <option value="admin">Admin</option>
+                                            <option value="superAdmin">Super Admin</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" *ngIf="showPortFields">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Type d'utilisateur </label>
+                                        <select class="form-control" [(ngModel)]="user.userPortType">
+                                            <option value="DIRECTEUR_DE_PORT">Directeur de Port</option>
+                                        <option value="COORDINATEUR_QUALITE">Coordinateur Qualite</option>
+                                        <option value="CHEF_DIVISION_EXPLOITATEUR">Chef Division Exploiteur</option>
+                                        <option value="CHEF_SERVICE_EXPLOITATEUR">Chef Service Exploiteur</option>
+                                        <option value="CHEF_DIVISION_CAPITAINERIE">Chef Division Capitainerie</option>
+                                        <option value="CHEF_SERVICE_ARMEMENT">Chef Service Armement</option>
+                                        <option value="CHEF_SERVICE_SURETE_SECURITE">Chef Service Surete Securite</option>
+                                        <option value="CHEF_DIVISION_TECHNIQUE">Chef Division Technique</option>
+                                        <option value="CHEF_SERVICE_MAINTENANCE">Chef Service Maintenance</option>
+                                        <option value="CHEF_DIVISION_ADMINISTRATIF_FINANCIER">Chef Division Administratif Financier</option>
+                                        <option value="CHEF_SERVICE_ADMINISTRATIF">Chef Service Administratif</option>
+                                        <option value="CHEF_SECTION_ACHAT">Chef Section Achat</option>
+                                        <option value="CHEF_SERVICE_FINANCIER">Chef Service Financier</option>
+                                        <option value="CHEF_SECTION_COMPTABILITE">Chef Section Comptabilite</option>
+                                        <option value="CHEF_DIVISION_GARRE_MARITIME">Chef Division Garre Maritime</option>
+                                        <option value="CHEF_SERVICE_GARRE_MARITIME">Chef Service Garre Maritime</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Port associé</label>
+                                        <select class="form-control" [(ngModel)]="user.port">
+                                            <option value="RADES">Rades</option>
+                                        <option value="BIZERTE">Bizerte</option>
+                                        <option value="GOULETTE">Goulette</option>
+                                        <option value="SOUSSE">Sousse</option>
+                                        <option value="SFAX">Sfax</option>
+                                        <option value="GABES">Gabes</option>
+                                        <option value="ZARZIS">Zarzis</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" *ngIf="showRegionMaritimeFields">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Type d'utilisateur</label>
+                                        <select class="form-control" [(ngModel)]="user.userRegionMaritimeType">
+                                            <option value="CHEF_REGION_MARITIME">Chef Region Maritime</option>
+                                        <option value="COORDINATEUR_QUALITE">Coordinateur Qualite</option>
+                                        <option value="CHEF_DIVISION_SECURITE_MARITIME">Chef Division Securite Maritime</option>
+                                        <option value="CHEF_SERVICE_SECURITE_MARITIME">Chef Service Securite Maritime</option>
+                                        <option value="CHEF_QUARTIER">Chef Quartier</option>
+                                        <option value="CHARGE_BUREAU_FLOTTE">Charge Bureau Flotte</option>
+                                        <option value="CHARGE_BUREAU_GENS_DE_MER">Charge Bureau Gens de Mer</option>
+                                        <option value="CHEF_SOUS_QUARTIER_MARITIME">Chef Sous Quartier Maritime</option>
+                                        <option value="CHEF_QUARTIER_MARITIME">Chef Quartier Maritime</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Région maritime associée</label>
+                                        <select class="form-control" [(ngModel)]="user.region">
+                                            <option value="BIZERTE">Bizerte</option>
+                                        <option value="TUNIS">Tunis</option>
+                                        <option value="SOUSSE">Sousse</option>
+                                        <option value="MONASTIR">Monastir</option>
+                                        <option value="SFAX">Sfax</option>
+                                        <option value="GABES">Gabes</option>
+                                        <option value="DJERBA">Djerba</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Register</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

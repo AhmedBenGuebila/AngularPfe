@@ -13,8 +13,14 @@ export interface User {
     port?: Port; // Port associé à l'utilisateur
     userRegionMaritimeType?: UserRegionMaritimeType; // Type d'utilisateur associé à une région maritime
     region?: Region; // Région maritime associée à l'utilisateur
+    userType?: UserType
 }
-  
+    export enum UserType {
+    admin = 'ADMIN',
+    port = 'PORT',
+    regionmaritime = "REGION_MARITIME"
+
+  }
   
   export enum UserAdminType {
     admin = 'admin',

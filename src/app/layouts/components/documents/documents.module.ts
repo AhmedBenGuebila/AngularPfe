@@ -7,13 +7,15 @@ import { FormDocumentsComponent } from './form-documents/form-documents.componen
 import { FormsModule } from '@angular/forms';
 import { ListDocumentsComponent } from './list-documents/list-documents.component';
 import { AffecterUtilisateurComponent } from './affecter-utilisateur/affecter-utilisateur.component';
+import { ListDocumentsUserComponent } from './list-documents-user/list-documents-user.component';
 
 @NgModule({
   declarations: [
     DocumentsComponent,
     FormDocumentsComponent,
     ListDocumentsComponent,
-    AffecterUtilisateurComponent
+    AffecterUtilisateurComponent,
+    ListDocumentsUserComponent
   ],
   imports: [
     CommonModule,

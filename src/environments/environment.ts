@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  defaultUrl: 'http://localhost:8080/ommp/api'
+  defaultUrl: 'http://localhost:8080/ommp/api',
+  authUrl: 'http://localhost:8080/ommp'
 };
